@@ -1,8 +1,11 @@
 import React from 'react'
 import { ChevronDown, ChevronUp } from '../icons';
+import { removeItem, increase, decrease } from '../redux/cart/cartSlice';
+import { useDispatch } from 'react-redux';
 
-
-export default function CartItem() {
+// eslint-disable-next-line react/prop-types
+const CartItem = ({ id, img, title, price, amount }) => {
+  const dispatch = useDispatch();
   return (
     <article className='cart-item'>
       <img src={img} alt={title} />
@@ -22,7 +25,6 @@ export default function CartItem() {
         <button
           className='amount-btn'
           onClick={() => {
-            console.log(typeof ({id}));
             dispatch(increase({ id }));
           }}
         >
@@ -44,4 +46,5 @@ export default function CartItem() {
       </div>
     </article>
   );
-}
+};
+export default CartItem;
